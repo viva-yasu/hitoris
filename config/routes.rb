@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'food/index'
+
   devise_for :users
   root 'pages#index'
 
