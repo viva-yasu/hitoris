@@ -1,2 +1,70 @@
-<h1>ようこそ</h1>
-<p>トップページです。</p>
+
+<!-- 以後紹介 -->
+<header class="header">
+  <!-- <img id="logo" src="materials/logo.png" alt="HITORIs"> -->
+  <div class="headerpic">
+    <h2 id="catchcopy">下宿はもっと楽しくなる。</h2>
+    <%= image_tag 'partyaf.jpg', :id => "party", :alt => "トップ画像" %>
+  </div>
+  <bottun class="btn-danger btn-block"><p id="registration"><%= link_to '「HITORIs」に登録する', new_user_registration_path %></p>
+  </bottun>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="explanations">
+      <div class="col-lg-4 col-xs-12">
+        <h3>
+          <div class="examplestrong"><span class="glyphicon glyphicon-time" aria-hidden="true"></span><strong>　　集まる</strong>
+          </div>
+        </h3>
+        <br>
+
+        <p>近くで開かれる「<strong>宅飲み</strong>」を検索。 行きたい「<strong>宅飲み</strong>」があれば参加。そして適当に人を集めて「<strong>宅飲み</strong>」開催。これぞ、下宿生。<br>
+        </p>
+      </div>
+
+      <div class="col-lg-4 col-xs-12">
+        <h3>
+          <div class="examplestrong"><span class="glyphicon glyphicon-heart"
+                                           aria-hidden="true"></span><strong>　　分ける</strong></div>
+        </h3>
+        <br>
+
+        <p><strong>「栓抜き、買うの忘れた。」 
+          「たまねぎ、5玉もいらない。」</strong>
+           余った日用品や、調理しきれなかった野菜はHITORIs◯◯へ。一人暮らしの”無駄”、なくせます。</p>
+      </div>
+
+      <div class="col-lg-4 col-xs-12">
+        <h3>
+          <div class="examplestrong"><span class="glyphicon glyphicon-list" aria-hidden="true"></span><strong>　　教える</strong>
+          </div>
+        </h3>
+        <br>
+
+        <p><strong>美味しかったレシピ。 近くの安いスーパー。
+          掃除の仕方や光熱費の押さえ方など。</strong>
+          暮らしの中で見つけた便利な知恵を共有して、生活をパワーアップ。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="moredetail">
+    <!-- <img id="greendoor" src="materials/roomaf.jpg" alt="お部屋の画像" > -->
+    <p><br>HITORIs（ヒトリス）は、一人暮らしをする学生の「寂しい」や「不便」を解消するためのサービスです。思ったより大変な一人暮らし、お母さんの手が借りられないなら、近くで一人暮らしをする仲間と助け合いませんか？
+    </p>
+  </div>
+
+  <footer class="global-footer">
+    <nav>
+      <h4>「」について</h4>
+
+      <div class="footercontents">
+        <li>お知らせ</li>
+        <li>よくある質問</li>
+      </div>
+    </nav>
+    <p class="copyright">Copyright</p>
+  </footer>
+</div>
