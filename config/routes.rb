@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'food/index'
+  get 'food', to: 'food#index'
+  post 'talks/create', to: "food#create"
+  post 'talks/destroy', to: "food#destroy"
 
   devise_for :users
 

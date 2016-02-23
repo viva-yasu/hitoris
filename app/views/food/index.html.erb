@@ -1,2 +1,23 @@
-<h1>Food#index</h1>
-<p>Find me in app/views/food/index.html.erb</p>
+<h1>食材</h1>
+<ul>
+  <% @foods.each do |food|  %>
+      <li>
+        <%= food.message %> @<%= food.user.name %>
+        <% if food.user_id == current_user.id %>
+            <%= form_for(@food, :url => {:controller => :food, :action => :destroy}, :html => { :class => :inline }) do |f| %>
+                <% @food.id = food.id %>
+                <%= f.hidden_field :id %>
+                <%= f.submit "x" %>
+            <% end %>
+        <% end %>
+      </li>
+  <% end %>
+</ul>
+
+<% @food.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+<% end %>
+<%= form_for(@new_food, :url => {:controller => :food, :action => :create}) do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "送信" %>
+<% end %>

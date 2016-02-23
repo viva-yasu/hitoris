@@ -9,6 +9,9 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+
+      food:
+        message: メッセージ
     models:
       user: "ユーザ"
     errors:
@@ -30,6 +33,10 @@ ja:
             password_confirmation:
               confirmation: "パスワードと一致しません"
             current_password:
+              blank: を入力してください
+        food:
+          attributes:
+            message:
               blank: を入力してください
 
   devise:
