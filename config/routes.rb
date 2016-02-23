@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   get 'food/index'
 
   devise_for :users
+
   root 'pages#index'
 
-  get 'main', to: 'pages#show'
+  get 'main', to: 'pages#main'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

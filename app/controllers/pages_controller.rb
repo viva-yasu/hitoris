@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
-  before_action :sign_in_required, only: [:show]
+  before_action :sign_in_required, only: [:main]
+
+  # TODO:: ログイン前の静的ページ
   def index
   end
 
-  def show
+
+  def main
   end
 end
