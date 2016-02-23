@@ -21,6 +21,9 @@ ja:
             email:
               blank: "を入力してください"
               taken: "はすでに登録されています"
+              invalid: "が不正です"
+            nearest_station:
+              blank: を入力してください
             password:
               blank: "を入力してください"
               too_short: "は8文字以上で設定してください"
