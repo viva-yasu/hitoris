@@ -1,0 +1,127 @@
+html {
+    overflow: auto;
+}
+body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+/*#logo{
+  position: absolute;
+}*/
+
+#titlelogo{
+  color:#ff4d4d;
+  font-weight:bold;
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  color:white;
+  line-height :1.4em;
+}
+
+li{
+  list-style-type: none;
+}
+
+.header {
+  text-align: center;
+  /*background-color: #eee;*/
+}
+
+#catchcopy {
+  position: absolute;
+  color:white;
+  font-size: 60px;
+  font-family: impact;
+  padding-left: 180px;
+  padding-top: 280px;
+  text-shadow: black 1px 1px 0px, black -1px 1px 0px,
+             black 1px -1px 0px, black -1px -1px 0px;
+}
+
+
+.explanations{
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+
+.moredetail {
+  margin-top: 30px;
+  margin-bottom: 80px;
+  font-size: 20px;
+  text-align: center;
+  }
+
+#registration{
+  padding-top:10px;
+  padding-bottom: 10px;
+  font-size:15px;
+  font-weight: bold;
+}
+
+#registration > a {
+    color: #fff;
+}
+#registration > a:hover {
+     text-decoration: none;
+}
+/*#greendoor{
+  position: relative;
+  text-align: center;
+  margin: auto;
+}*/
+
+.global-footer {
+  color:white;
+  padding-top:20px;
+  padding-bottom: 20px;
+  background: #2e2e2e;
+  text-align: center;
+  margin: 0 -500%; /* ネガティブマージンを追記 */
+  padding:20px  500%; /* マージンで横へはみ出した部分を相殺 */
+}
+
+.footercontents {
+  margin:10px;
+}
+
+@media screen and (max-width: 1000px) {
+}
+
+@media screen and (max-width:480px) {
+  #greendoor {
+    width:100%;
+  }
+
+  #party{
+    width:100%;
+  }
+
+  #logo{
+    position: absolute;
+    width:60%;
+  }
+
+  #catchcopy {
+    position: absolute;
+    font-size: 30px;
+    padding-left: 25px;
+    padding-top: 80px;
+  }
+
+  .explanations{
+    margin-left: 20px;
+    margin-right:20px;
+  }
+
+  .examplestrong{
+    background-color: #ff8080;
+    border-radius: 7px;
+  }
+
+}
