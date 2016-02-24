@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post 'talks/create', to: "food#create"
   post 'talks/destroy', to: "food#destroy"
 
+  post 'post', to: 'food#post'
+
   devise_for :users
 
   root 'pages#index'

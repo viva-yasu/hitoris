@@ -24,6 +24,14 @@ class FoodController < ApplicationController
     redirect_to food_path
   end
 
+  def post
+    message = params[:message]
+    food = Food.new(message: message, user_id: current_user.id)
+    food.save
+    Pusher['food_channel'].trigger('chat_event', {message: message, name: current_user.name})
+    render :text => 'OK', :status => 200
+  end
+
   private
   def food_params
     params.require(:food).permit(:message)
