@@ -14,8 +14,8 @@
 
     <div class="field">
       <% if @user.image? %>
-          <div class="thumbnail">
-            <%= image_tag @user.image.url %>
+          <div>
+            <%= image_tag @user.image.url, size: '200x200' %>
           </div>
       <% end %>
       <%= f.label :image %>

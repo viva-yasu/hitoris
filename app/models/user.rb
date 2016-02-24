@@ -12,5 +12,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :nearest_station, presence: true
+  # TODO:: コメントアウトを外す
   # validates :email, format: { with: VALID_DU_EMAIL_REGEX }
 end

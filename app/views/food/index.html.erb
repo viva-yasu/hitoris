@@ -15,7 +15,12 @@
         console.log(data);
         var messagelog = document.getElementById('messagelog');
         var messagediv = document.createElement('div');
+        var messageImage = document.createElement('img');
+        messageImage.src = data.image_path;
+        messageImage.width = 50;
+        messageImage.height = 50;
         messagediv.innerHTML = data.message + ' @' + data.name;
+        messagediv.appendChild(messageImage);
         messagelog.appendChild(messagediv);
         $('.input_field').val('');
     });
@@ -24,7 +29,7 @@
 <div id='messagelog'>
   <% @foods.each do |food|  %>
       <div>
-        <%= food.message %> @<%= food.user.name %>
+        <%= food.message %> @<%= food.user.name %> <%= image_tag food.user.image.thumb.url, size: '50x50' %>
       </div>
   <% end %>
 </div>
