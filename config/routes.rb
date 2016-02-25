@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+
+
+  get 'talks/edit/:id' => 'talks#edit'
+  get 'talks/show/:id' => 'talks#show'
+  get 'talks/new', to: 'talks#new'
+  get 'main', to: 'talks#index'
+
+  get 'talks/destroy/:id' => 'talks#destroy'
+  post 'talks/create', to: 'talks#create'
+  patch 'talks/update', to: 'talks#update'
+
   get 'food', to: 'food#index'
-  post 'talks/create', to: "food#create"
-  post 'talks/destroy', to: "food#destroy"
 
   post 'post', to: 'food#post'
 
@@ -9,7 +18,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  get 'main', to: 'pages#main'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

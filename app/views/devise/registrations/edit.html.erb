@@ -1,69 +1,84 @@
-<h2><%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %></h2>
+<div class="text-center">
+  <div class="logo">アカウント設定</div>
+  <!-- Main Form -->
+  <div class="edit-user-form1">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, id: 'login-form', class: 'text-left'}) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="login-form-main-message"></div>
+        <div class="main-login-form">
+          <div class="login-group">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :nearest_station %>
+              <%= f.text_field :nearest_station, class: 'form-control' %>
+            </div>
+            <div class="field form-group">
+              <%= f.label :image %>
+              <div class="profile-img">
+                <% if @user.image? %>
+                    <%= image_tag @user.image.url, size: '200x200' %>
+                <% else %>
+                    <%= image_tag 'default.png', size: '200x200' %>
+                <% end %>
+              </div>
+              <%= f.file_field :image, class: 'form-control' %>
+              <%= f.hidden_field :image_cache %>
+            </div>
+            <div class="field">
+              <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+              <% if @user.persisted? && @user.image? %>
+                  <label>
+                    <%= f.check_box :remove_image %>
+                    画像を削除
+                  </label>
+              <% end %>
+            </div>
+            <div class="field profile-sex form-group">
+              <%= f.label :sex %>
+              <%= f.select :sex, User.sex.options %>
+            </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+            <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
+                <p>
+                  <%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %>
+                </p>
+            <%- end -%>
 
-    <div><%= f.label :name %></div>
-    <div><%= f.text_field :name %></div>
 
-    <div><%= f.label :email %></div>
-    <div><%= f.email_field :email %></div>
+            <div class="form-group">
+              <%= f.label '新しいパスワード' %>
+              <i>( パスワードを変更する場合のみ )</i>
+              <%= f.password_field :password, :autocomplete => "off", class: 'form-control' %>
+            </div>
 
-    <div><%= f.label :nearest_station %></div>
-    <div><%= f.text_field :nearest_station %></div>
+            <div class="form-group">
+              <%= f.label '新しいパスワード(確認)' %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
 
-    <div class="field">
-      <% if @user.image? %>
-          <div>
-            <%= image_tag @user.image.url, size: '200x200' %>
+            <div class="form-group">
+              <%= f.label :current_password %>
+              <%= f.password_field :current_password, class: 'form-control' %>
+            </div>
+
+            <div class="form-group override-padding">
+              <%= f.submit '更新', class: 'btn-primary btn submit-btn' %>
+            </div>
           </div>
-      <% else %>
-          <div>
-            <%= image_tag 'default.png', size: '200x200' %>
-          </div>
-      <% end %>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-      <%= f.hidden_field :image_cache %>
-    </div>
-    <div class="field">
-      <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
-      <% if @user.persisted? && @user.image? %>
-          <label>
-            <%= f.check_box :remove_image %>
-            画像を削除
-          </label>
-      <% end %>
-    </div>
-    <div class="field">
-      <div>
-          <%= f.label :sex %>
-      </div>
-      <div>
-        <%= f.select :sex, User.sex.options %>
-      </div>
-    </div>
+        </div>
+    <% end %>
+  </div>
 
-    <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
-    <p>
-      <%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %>
-    </p>
-  <%- end -%>
+</div>
+<div class="links-block">
+  <p><%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => {:confirm => t('.are_you_sure', :default => "Are you sure?")}, :method => :delete %></p>
 
-  <div><%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i></div>
-  <div><%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %></div>
-  <div><%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</i></div>
-  <div><%= f.password_field :current_password %></div>
-
-  <div><%= f.submit t('.update', :default => "Update") %></div>
-<% end %>
-
-
-
-<p><%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete %>.</p>
-
-<%= link_to t('devise.shared.links.back', :default => "Back"), :back %>
+  <p><%= link_to t('devise.shared.links.back', :default => "Back"), :back %></p>
+</div>

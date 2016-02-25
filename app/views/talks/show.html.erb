@@ -1,0 +1,6 @@
+<p><%= @talk.user.name %></p>
+<p><%= @talk.title %></p>
+<p><%= simple_format @talk.detail %></p>
+<% if @talk.image? %>
+    <%= image_tag @talk.image.url, size: '100x100' %>
+<% end %>

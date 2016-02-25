@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   enumerize :sex, :in => ['男性', '女性']
 
   has_many :foods
+  has_many :talks
 
   mount_uploader :image, ImageUploader
 

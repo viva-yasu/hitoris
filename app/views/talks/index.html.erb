@@ -1,0 +1,17 @@
+<%= link_to '新規投稿', talks_new_path %>
+
+<% @talks.each do |t| %>
+    <div>
+      <% if t.image? %>
+          <% image_tag t.image.thumb.url %>
+      <% end %>
+      <p><%= t.title %></p>
+      <p><%= t.detail %></p>
+      <p><%= t.user.name %></p>
+      <p><%= t.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      <td><%= link_to '詳細', '/talks/show/' + t.id.to_s %></td>
+      <% if t.user_id == current_user.id %>
+      <td><%= link_to '編集', '/talks/edit/' + t.id.to_s %></td>
+      <% end %>
+    </div>
+<% end %>
