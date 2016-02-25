@@ -4,5 +4,6 @@ class Talk < ActiveRecord::Base
 
   validates :title, presence: true, length: {maximum: 50}
   validates :detail, presence: true
+  validates :image, presence: true
 
 end

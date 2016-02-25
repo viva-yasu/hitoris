@@ -42,7 +42,14 @@ ja:
           attributes:
             message:
               blank: を入力してください
-
+        talk:
+          attributes:
+            title:
+              blank: を入力してください
+            detail:
+              blank: を入力してください
+            image:
+              blank: を選択してください
   devise:
     confirmations:
       new:
