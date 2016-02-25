@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resource :talks
   get 'food', to: 'food#index'
   post 'talks/create', to: "food#create"
   post 'talks/destroy', to: "food#destroy"
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  get 'main', to: 'pages#main'
+  get 'main', to: 'talks#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
