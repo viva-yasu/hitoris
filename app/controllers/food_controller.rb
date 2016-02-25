@@ -28,10 +28,15 @@ class FoodController < ApplicationController
     message = params[:message]
     food = Food.new(message: message, user_id: current_user.id)
     food.save
+    if current_user.image?
+      img = current_user.image.thumb.url
+    else
+      img = '/assets/thumb_default.png'
+    end
     data = {
         message: message,
         name: current_user.name,
-        image_path: current_user.image.thumb.url
+        image_path: img
     }
     Pusher['food_channel'].trigger('chat_event', data)
     render :text => 'OK', :status => 200
