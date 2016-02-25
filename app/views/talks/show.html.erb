@@ -1,2 +1,6 @@
-<h1>Talks#show</h1>
-<p>Find me in app/views/talks/show.html.erb</p>
+<p><%= @talk.user.name %></p>
+<p><%= @talk.title %></p>
+<p><%= simple_format @talk.detail %></p>
+<% if @talk.image? %>
+    <%= image_tag @talk.image.url, size: '100x100' %>
+<% end %>
