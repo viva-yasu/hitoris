@@ -43,9 +43,9 @@
                 <a href="#" class="link-user-edit"><%= image_tag('arrow.png', size: '15x13') %></a>
 
                 <div class="click-link click-link-hidden">
-                  <p class="link-block"><%= link_to '編集', '/talks/edit/' + t.id.to_s, class: 'link-text' %></p>
+                  <p class="link-block"><%= link_to 'この投稿を編集', '/talks/edit/' + t.id.to_s, class: 'link-text  glyphicon glyphicon-pencil' %></p>
 
-                  <p class="link-block"><%= link_to '削除', '/talks/destroy/' + t.id.to_s, class: 'link-text' %></p>
+                  <p class="link-block "><%= link_to 'この投稿を削除', '/talks/destroy/' + t.id.to_s, class: 'link-text  glyphicon glyphicon-minus-sign' %></p>
                 </div>
             <% end %>
           </div>

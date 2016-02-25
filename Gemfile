@@ -41,6 +41,7 @@ gem 'devise-i18n-views'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem "font-awesome-rails"
 
 # Pusher
 gem 'pusher'
