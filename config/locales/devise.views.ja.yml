@@ -9,7 +9,7 @@ ja:
         image: プロフィール画像
         password: "パスワード"
         password_confirmation: "確認用パスワード"
-        remember_me: "ログインを記憶"
+        remember_me: "ログイン情報を保存"
 
       food:
         message: メッセージ

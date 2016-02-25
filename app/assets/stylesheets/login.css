@@ -288,3 +288,10 @@ label:hover:before {
 .global-footer{
   margin-top:100px;
 }
+
+.submit-btn {
+    width: 100%;
+}
+.override-padding {
+    padding-right: 0 !important;
+}
