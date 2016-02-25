@@ -29,7 +29,7 @@
 <div id='messagelog'>
   <% @foods.each do |food|  %>
       <div>
-        <%= food.message %> @<%= food.user.name %> <%= image_tag food.user.image.thumb.url, size: '50x50' %>
+        <%= food.message %> @<%= food.user.name %> <% if food.user.image? %><%= image_tag food.user.image.thumb.url, size: '50x50' %><% else %><%= image_tag 'thumb_default.png', size: '50x50' %><% end %>
       </div>
   <% end %>
 </div>

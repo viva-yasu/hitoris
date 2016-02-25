@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   post 'post', to: 'food#post'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   root 'pages#index'
 
