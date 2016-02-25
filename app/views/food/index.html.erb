@@ -1,6 +1,17 @@
 <script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+    $(function() {
+        $('body').delay(100).animate({
+            scrollTop: $(document).height()
+        },1500);
+        /*
+         //animationする必要がなければ
+         setTimeout(function() {
+         window.scroll(0,$(document).height());
+         },0);
+         */
+    });
     // Enable pusher logging - don't include this in production
     Pusher.log = function (message) {
         if (window.console && window.console.log) {
@@ -23,6 +34,10 @@
         messagediv.appendChild(messageImage);
         messagelog.appendChild(messagediv);
         $('.input_field').val('');
+
+        $('body').delay(100).animate({
+            scrollTop: $(document).height()
+        },150);
     });
 </script>
 <div class="room-title"><%= @talk.title %></div>
