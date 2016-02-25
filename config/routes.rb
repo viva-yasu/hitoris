@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'talks/create', to: 'talks#create'
   patch 'talks/update', to: 'talks#update'
 
-  get 'food', to: 'food#index'
+  get 'chat/:id' => 'food#index'
 
   post 'post', to: 'food#post'
 

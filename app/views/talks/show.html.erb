@@ -1,9 +1,23 @@
 <div class="talk-details">
-  <% if @talk.image? %>
-      <%= image_tag @talk.image.url, size: '200x200', class: 'talk-details-img' %>
-  <% end %>
-  <p class="talk-details-name">ユーザー名： <%= @talk.user.name %></p>
-  <p class="talk-details-title"><%= @talk.title %></p>
-  <p class="talk-details-details"><%= simple_format @talk.detail %></p>
+  <div class="talk-details-img-block">
+    <% if @talk.image? %>
+        <%= image_tag @talk.image.url, size: '300x300', class: 'talk-details-img' %>
+    <% end %>
+    <div class="talk-details-title-wrap">
+      <div class="talk-details-title"><%= @talk.title %></div>
+    </div>
+  </div>
+  <div class="talk-details-wrap">
+  <div class="talk-details-details"><%= simple_format @talk.detail %></div>
+
+  <div class="talk-details-name">ユーザー名： <%= @talk.user.name %></div>
+
+  <div class="talk-details-datetime">最寄駅　　： <%= @talk.user.nearest_station %></div>
+
+  <div class="talk-details-datetime">作成日時　： <%= @talk.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+
+  <button class="btn-primary btn submit-btn talk-room-btn"><%= link_to 'チャットルーム', '/chat/' + @talk.id.to_s, class: 'chat-room' %></button>
+  </div>
+
 </div>
 
