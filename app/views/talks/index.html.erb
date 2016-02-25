@@ -1,17 +1,55 @@
-<%= link_to '新規投稿', talks_new_path %>
+<script>
+    $(function () {
+        $(".card-user-edit").click(function () {
+            console.log('click');
+            if ($(this).children("div").hasClass("click-link-hidden")) {
+                $(this).children("div").removeClass("click-link-hidden").addClass("click-link-display");
+            } else {
+                $(this).children("div").removeClass("click-link-display").addClass("click-link-hidden");
+            }
+        });
+    });
+</script>
+<ul class="card-talks">
+  <% @talks.each do |t| %>
+      <li class="card-talk">
+        <a href="/talks/show/<%= t.id.to_s %>">
+          <div class="img-block">
+            <% if t.user.image? %>
+                <%= image_tag t.user.image.url, size: '100x100', class: 'card-img' %>
+            <% else %>
+                <%= image_tag 'default.png', size: '100x100', class: 'card-img' %>
+            <% end %>
+          </div>
+          <div class="content-block">
+            <div class="card-title">
+              <%= title_cut t.title %>
+            </div>
 
-<% @talks.each do |t| %>
-    <div>
-      <% if t.image? %>
-          <% image_tag t.image.thumb.url %>
-      <% end %>
-      <p><%= t.title %></p>
-      <p><%= t.detail %></p>
-      <p><%= t.user.name %></p>
-      <p><%= t.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-      <td><%= link_to '詳細', '/talks/show/' + t.id.to_s %></td>
-      <% if t.user_id == current_user.id %>
-      <td><%= link_to '編集', '/talks/edit/' + t.id.to_s %></td>
-      <% end %>
-    </div>
-<% end %>
+            <div class="card-name">
+              @<%= t.user.name %>
+            </div>
+
+            <div class="card-nearest-station">
+              最寄駅: <%= t.user.nearest_station %>
+            </div>
+
+            <div class="card-datetime">
+              作成日時: <%= t.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </div>
+          </div>
+          <div class="card-user-edit">
+            <% if t.user_id == current_user.id %>
+                <a href="#" class="link-user-edit"><%= image_tag('arrow.png', size: '15x13') %></a>
+
+                <div class="click-link click-link-hidden">
+                  <p class="link-block"><%= link_to '編集', '/talks/edit/' + t.id.to_s, class: 'link-text' %></p>
+
+                  <p class="link-block"><%= link_to '削除', '/talks/edit/' + t.id.to_s, class: 'link-text' %></p>
+                </div>
+            <% end %>
+          </div>
+        </a>
+      </li>
+  <% end %>
+</ul>

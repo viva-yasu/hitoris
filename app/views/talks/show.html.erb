@@ -1,6 +1,9 @@
-<p><%= @talk.user.name %></p>
-<p><%= @talk.title %></p>
-<p><%= simple_format @talk.detail %></p>
-<% if @talk.image? %>
-    <%= image_tag @talk.image.url, size: '100x100' %>
-<% end %>
+<div class="talk-details">
+  <% if @talk.image? %>
+      <%= image_tag @talk.image.url, size: '200x200', class: 'talk-details-img' %>
+  <% end %>
+  <p class="talk-details-name">ユーザー名： <%= @talk.user.name %></p>
+  <p class="talk-details-title"><%= @talk.title %></p>
+  <p class="talk-details-details"><%= simple_format @talk.detail %></p>
+</div>
+
