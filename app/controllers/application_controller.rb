@@ -26,9 +26,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:sign_up) << :nearest_station
     devise_parameter_sanitizer.for(:sign_up) << :image
+    devise_parameter_sanitizer.for(:sign_up) << :sex
 
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:name, :email, :password, :password_confirmation, :current_password, :image, :image_cache, :remove_image)
+      u.permit(:name, :email, :password, :password_confirmation, :current_password, :image, :image_cache, :remove_image, :sex)
     end
   end
 

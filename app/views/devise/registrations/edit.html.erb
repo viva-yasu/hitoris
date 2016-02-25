@@ -31,6 +31,14 @@
           </label>
       <% end %>
     </div>
+    <div class="field">
+      <div>
+          <%= f.label :sex %>
+      </div>
+      <div>
+        <%= f.select :sex, User.sex.options %>
+      </div>
+    </div>
 
     <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
     <p>
