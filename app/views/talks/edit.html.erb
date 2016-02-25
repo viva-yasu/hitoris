@@ -26,12 +26,12 @@
               <%= f.text_area :detail, class: 'form-control' %>
             </div>
             <div class="form-group">
+              <%= f.label :image %>
               <% if @talk.image? %>
                   <div class="thumbnail">
                     <%= image_tag @talk.image.url, size: '200x200' %>
                   </div>
               <% end %>
-              <%= f.label :image %>
               <%= f.file_field :image, class: 'form-control' %>
               <%= f.hidden_field :image_cache %>
             </div>

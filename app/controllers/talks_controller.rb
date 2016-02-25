@@ -49,6 +49,13 @@ class TalksController < ApplicationController
   end
 
   def destroy
+    @talk = Talk.find(get_id_params)
+
+    if @talk.nil? || current_user.id != @talk.user_id
+      redirect_to main_path
+    end
+    @talk.destroy
+    redirect_to main_path
   end
 
   private

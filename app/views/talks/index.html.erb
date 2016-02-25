@@ -45,7 +45,7 @@
                 <div class="click-link click-link-hidden">
                   <p class="link-block"><%= link_to '編集', '/talks/edit/' + t.id.to_s, class: 'link-text' %></p>
 
-                  <p class="link-block"><%= link_to '削除', '/talks/edit/' + t.id.to_s, class: 'link-text' %></p>
+                  <p class="link-block"><%= link_to '削除', '/talks/destroy/' + t.id.to_s, class: 'link-text' %></p>
                 </div>
             <% end %>
           </div>
