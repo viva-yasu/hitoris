@@ -50,6 +50,9 @@
             <%= link_to 'ログイン', new_user_session_path %><span class="sr-only">(current)</span>
           <% end %>
         </li>
+        <% if user_signed_in? %>
+            <li><%= link_to '新規投稿(仮あとで変える)', talks_new_path %></li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">メニュー<span class="caret"></span></a>
@@ -65,7 +68,6 @@
                 <li><%= link_to '新規登録', new_user_registration_path %></li>
             <% end %>
           </ul>
-        </li>
       </ul>
     </div>
     <!-- /.navbar-collapse-->
