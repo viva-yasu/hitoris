@@ -1,6 +1,8 @@
 class FoodController < ApplicationController
   def index
-    @foods = Food.all
+    @talk_id = params[:id].to_i
+    @talk = Talk.find @talk_id
+    @foods = Food.where(talk_id: @talk_id)
     @new_food = Food.new
     @food = Food.new
   end
@@ -26,7 +28,7 @@ class FoodController < ApplicationController
 
   def post
     message = params[:message]
-    food = Food.new(message: message, user_id: current_user.id)
+    food = Food.new(message: message, user_id: current_user.id, talk_id: params[:talk_id].to_i)
     food.save
     if current_user.image?
       img = current_user.image.thumb.url
@@ -38,7 +40,7 @@ class FoodController < ApplicationController
         name: current_user.name,
         image_path: img
     }
-    Pusher['food_channel'].trigger('chat_event', data)
+    Pusher['food' + params[:talk_id] + '_channel'].trigger('chat_event', data)
     render :text => 'OK', :status => 200
   end
 

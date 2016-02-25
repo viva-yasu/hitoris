@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
     // Enable pusher logging - don't include this in production
-    Pusher.log = function(message) {
+    Pusher.log = function (message) {
         if (window.console && window.console.log) {
             window.console.log(message);
         }
@@ -10,8 +10,8 @@
 
     var pusher = new Pusher('0c30fd7ef30e68da3788');
     //    var channel = pusher.subscribe('general_channel');
-    var channel = pusher.subscribe('food_channel');
-    channel.bind('chat_event', function(data) {
+    var channel = pusher.subscribe('food' + <%= @talk_id %> + '_channel');
+    channel.bind('chat_event', function (data) {
         console.log(data);
         var messagelog = document.getElementById('messagelog');
         var messagediv = document.createElement('div');
@@ -25,16 +25,22 @@
         $('.input_field').val('');
     });
 </script>
-
+<div class="room-title"><%= @talk.title %></div>
 <div id='messagelog'>
-  <% @foods.each do |food|  %>
-      <div>
-        <%= food.message %> @<%= food.user.name %> <% if food.user.image? %><%= image_tag food.user.image.thumb.url, size: '50x50' %><% else %><%= image_tag 'thumb_default.png', size: '50x50' %><% end %>
-      </div>
+  <% unless @foods.nil? %>
+      <% @foods.each do |food| %>
+          <div>
+            <%= food.message %> @<%= food.user.name %>
+            <% if food.user.image? %><%= image_tag food.user.image.thumb.url, size: '50x50' %>
+            <% else %><%= image_tag 'thumb_default.png', size: '50x50' %>
+            <% end %>
+          </div>
+      <% end %>
   <% end %>
 </div>
 
 <%= form_tag('/post', :remote => true, :class => 'ws_form') do %>
+    <%= hidden_field_tag 'talk_id', @talk_id %>
     <%= text_field_tag 'message', '', class: 'input_field' %>
-    <%= submit_tag '送信', id: 'submit'%>
+    <%= submit_tag '送信', id: 'submit' %>
 <% end %>
