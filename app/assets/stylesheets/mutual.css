@@ -1,0 +1,63 @@
+html {
+    overflow: auto;
+}
+
+body {
+    margin-top:20px;
+    overflow-x: hidden;
+    position: relative;
+    color: #555555;
+  background-color: #efefef;
+}
+
+#titlelogo{
+  color:#ff4d4d;
+  font-weight:bold;
+  font-size: 25px;
+}
+
+
+
+h1 {
+  font-size: 32px;
+  color:white;
+  line-height :1.4em;
+}
+
+li{
+  list-style-type: none;
+}
+
+.header {
+  text-align: center;
+  /*background-color: #eee;*/
+}
+
+.global-footer {
+  color:white;
+  padding-top:20px;
+  padding-bottom: 20px;
+  background: #2e2e2e;
+  text-align: center;
+  margin: 0 -500%; /* ネガティブマージンを追記 */
+  padding:20px  500%; /* マージンで横へはみ出した部分を相殺 */
+}
+
+.footercontents {
+  margin:10px;
+}
+
+@media screen and (max-width:480px) {
+  #greendoor {
+    width:100%;
+  }
+
+  #party{
+    width:100%;
+  }
+
+  #logo{
+    position: absolute;
+    width:60%;
+  }
+}
