@@ -83,3 +83,56 @@
   color: #000000;
 
 }
+
+// detail-page
+.talk-details {
+
+}
+.talk-details > p {
+  margin: 0;
+}
+.talk-details-name {
+
+}
+.talk-details-datetime {
+
+}
+.talk-details-datetime {
+
+}
+.talk-details-title-wrap {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(123, 119, 105, 0), rgba(123, 119, 105, 0.4));
+  text-align: left;
+}
+.talk-details-title {
+  font-weight: bold;
+  padding: 15px 10px;
+  color:  #889b00;
+  line-height: 1.2;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.talk-details-wrap {
+  font-size: 14px;
+  padding: 10px;
+}
+.talk-details-details {
+
+}
+.talk-details-img-block {
+  min-height: 240px;
+  text-align: center;
+  position: relative;
+}
+.talk-details-img {
+  width: 100%;
+  max-width: 640px;
+}
+.talk-room-btn {
+  margin-top: 10px;
+}
+.chat-room {
+  color: #ffffff;
+}
