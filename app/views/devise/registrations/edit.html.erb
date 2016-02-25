@@ -12,6 +12,25 @@
     <div><%= f.label :nearest_station %></div>
     <div><%= f.text_field :nearest_station %></div>
 
+    <div class="field">
+      <% if @user.image? %>
+          <div>
+            <%= image_tag @user.image.url, size: '200x200' %>
+          </div>
+      <% end %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+    <div class="field">
+      <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+      <% if @user.persisted? && @user.image? %>
+          <label>
+            <%= f.check_box :remove_image %>
+            画像を削除
+          </label>
+      <% end %>
+    </div>
 
     <%- if devise_mapping.confirmable? && resource.pending_reconfirmation? -%>
     <p>
