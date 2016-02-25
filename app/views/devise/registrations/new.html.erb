@@ -1,27 +1,44 @@
-<h2><%= t('.sign_up', :default => "Sign up") %></h2>
+<div class="text-center">
+  <div class="logo">新規登録</div>
+  <div class="edit-user-form1">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {id: 'login-form', class: 'text-left'}) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="login-form-main-message"></div>
+        <div class="main-login-form">
+          <div class="login-group">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div><%= f.label :name %></div>
-    <div><%= f.text_field :name %></div>
-
-    <div><%= f.label :email %></div>
-    <div><%= f.email_field :email %></div>
-
-    <div><%= f.label :nearest_station %></div>
-    <div><%= f.text_field :nearest_station %></div>
-
-    <div><%= f.label :sex %></div>
-    <div><%= f.select :sex, User.sex.options %></div>
-
-    <div><%= f.label :password %></div>
-    <div><%= f.password_field :password %></div>
-
-    <div><%= f.label :password_confirmation %></div>
-    <div><%= f.password_field :password_confirmation %></div>
-
-    <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+            <div class="form-group">
+              <%= f.label :nearest_station %>
+              <%= f.text_field :nearest_station, class: 'form-control' %>
+            </div>
+            <div class="form-group field profile-sex">
+              <%= f.label :sex %>
+              <%= f.select :sex, User.sex.options %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+            <div class="form-group override-padding">
+              <%= f.submit t('.sign_up', :default => "Sign up"), class: 'btn-primary btn submit-btn' %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+<div class="links-block">
+  <%= render "devise/shared/links" %>
+</div>

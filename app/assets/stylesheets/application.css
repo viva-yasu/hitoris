@@ -22,3 +22,14 @@
 body {
     margin-top: -20px;
 }
+#error_explanation {
+    text-align: center;
+}
+#error_explanation > h2 {
+    color: #ff0E15;
+    font-size: 20px;
+}
+#error_explanation > ul {
+    padding: 0;
+}
+
