@@ -12,6 +12,9 @@
     <div><%= f.label :nearest_station %></div>
     <div><%= f.text_field :nearest_station %></div>
 
+    <div><%= f.label :sex %></div>
+    <div><%= f.select :sex, User.sex.options %></div>
+
     <div><%= f.label :password %></div>
     <div><%= f.password_field :password %></div>
 

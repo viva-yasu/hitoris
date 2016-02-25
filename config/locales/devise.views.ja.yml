@@ -6,6 +6,9 @@ ja:
         current_password: "現在のパスワード"
         email: "メールアドレス"
         nearest_station: 最寄駅
+        sex: 性別
+        male: 男性
+        female: 女性
         image: プロフィール画像
         password: "パスワード"
         password_confirmation: "確認用パスワード"

@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include Enumerize
+  enumerize :sex, :in => ['男性', '女性']
+
   has_many :foods
 
   mount_uploader :image, ImageUploader
