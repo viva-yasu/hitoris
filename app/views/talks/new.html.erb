@@ -1,36 +1,46 @@
-<%= form_for(@talk, :url => {:action => 'create'}) do |f| %>
-    <% if @talk.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+<div class="text-center">
+  <div class="logo">新規登録</div>
+  <div class="edit-user-form1">
+    <%= form_for(@talk, :url => {:action => 'create'}, html: {id: 'login-form', class: 'text-left'}) do |f| %>
+        <% if @talk.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@talk.errors.count, "error") %> 件のエラーが発生しました</h2>
 
-          <ul>
-            <% @talk.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+              <ul>
+                <% @talk.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class="main-login-form">
+          <div class="login-group">
+            <div class="form-group">
+
+
+              <%= f.label :title %>
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :detail %>
+              <%= f.text_area :detail, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <% if @talk.image? %>
+                  <div class="thumbnail">
+                    <%= image_tag @talk.image.url %>
+                  </div>
+              <% end %>
+              <%= f.label :image %>
+              <%= f.file_field :image, class: 'form-control' %>
+              <%= f.hidden_field :image_cache %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit '作成', class: 'btn-primary btn submit-btn' %>
+            </div>
+          </div>
         </div>
     <% end %>
-
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :detail %><br>
-      <%= f.text_area :detail %>
-    </div>
-    <div class="field">
-      <% if @talk.image? %>
-          <div class="thumbnail">
-            <%= image_tag @talk.image.url %>
-          </div>
-      <% end %>
-      <%= f.label :image %><br>
-      <%= f.file_field :image %>
-      <%= f.hidden_field :image_cache %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit '作成' %>
-    </div>
-<% end %>
+  </div>
+</div>
