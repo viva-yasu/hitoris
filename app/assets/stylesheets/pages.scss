@@ -1,3 +1,67 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#registration {
+  > a {
+    color: #fff;
+  }
+}
+
+#catchcopy {
+  position: absolute;
+  color:white;
+  font-size: 60px;
+  font-family: impact;
+  padding-left: 180px;
+  padding-top: 260px;
+  text-shadow: black 1px 1px 0px, black -1px 1px 0px,
+  black 1px -1px 0px, black -1px -1px 0px;
+}
+
+.explanations{
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.moredetail {
+  margin-top: 30px;
+  margin-bottom: 80px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#registration{
+  padding-top:10px;
+  padding-bottom: 10px;
+  font-size:15px;
+  font-weight: bold;
+}
+
+.mini{
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+}
+
+@media screen and (max-width:480px) {
+
+  #catchcopy {
+    position: absolute;
+    font-size: 25px;
+    padding-left: 25px;
+    padding-top: 95px;
+  }
+
+  .explanations{
+    margin-left: 20px;
+    margin-right:20px;
+  }
+
+  .examplestrong{
+    border-radius: 3px;
+    font-size: 22px;
+  }
+
+}
