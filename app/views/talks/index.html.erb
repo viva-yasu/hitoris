@@ -1,12 +1,20 @@
 <script>
     $(function () {
-        $(".card-user-edit").click(function () {
+        $(document).on('click', '.card-user-edit', function () {
             console.log('click');
             if ($(this).children("div").hasClass("click-link-hidden")) {
                 $(this).children("div").removeClass("click-link-hidden").addClass("click-link-display");
             } else {
                 $(this).children("div").removeClass("click-link-display").addClass("click-link-hidden");
             }
+            $('body').addClass('close-area');
+        });
+    });
+    $(function () {
+        $(document).on('click', '.close-area', function () {
+            console.log('after click');
+            $('.card-user-edit').children('div').removeClass("click-link-display").addClass("click-link-hidden");
+            $('body').removeClass('close-area');
         });
     });
 </script>
@@ -43,9 +51,9 @@
                 <a href="#" class="link-user-edit"><%= image_tag('arrow.png', size: '15x13') %></a>
 
                 <div class="click-link click-link-hidden">
-                  <p class="link-block"><%= link_to '編集', '/talks/edit/' + t.id.to_s, class: 'link-text' %></p>
+                  <p class="link-block"><%= link_to 'この投稿を編集', '/talks/edit/' + t.id.to_s, class: 'link-text  glyphicon glyphicon-pencil' %></p>
 
-                  <p class="link-block"><%= link_to '削除', '/talks/destroy/' + t.id.to_s, class: 'link-text' %></p>
+                  <p class="link-block "><%= link_to 'この投稿を削除', '/talks/destroy/' + t.id.to_s, class: 'link-text  glyphicon glyphicon-minus-sign' %></p>
                 </div>
             <% end %>
           </div>
