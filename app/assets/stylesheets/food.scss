@@ -4,3 +4,18 @@
 .inline {
   display: inline-block;
 }
+
+.profile-sex > select {
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 14px;
+  border-radius: 2px;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  padding: 5px 24px 5px 10px;
+  background-image: image-url("icon_arrow_01.png");
+  background-repeat: no-repeat;
+  background-position: 97% center;
+  background-size: 12px auto;
+  width: 100%;
+}
