@@ -4,7 +4,6 @@ class TalksController < ApplicationController
   end
 
   def show
-    # render text: params[:id]
     @talk = Talk.find(get_id_params)
     if @talk.nil?
       redirect_to main_path
@@ -29,7 +28,7 @@ class TalksController < ApplicationController
     @talk.title = params[:talk][:title]
     @talk.detail = params[:talk][:detail]
     @talk.image = params[:talk][:image].nil? ? params[:talk][:image_cache].split('/')[1] : params[:talk][:image]
-
+    @talk.tag = params[:talk][:tag]
     if @talk.save
       redirect_to action: 'show', id: @talk.id
     else
@@ -58,9 +57,32 @@ class TalksController < ApplicationController
     redirect_to main_path
   end
 
+  def search
+    word = params[:word]
+    if word.length == 0
+      redirect_to main_path
+    end
+    @talks = Talk.where("title like '%#{word}%' OR detail like '%#{word}%'")
+    render :index
+  end
+
+  def tag
+    tag_key = params[:tag_key]
+    if tag_key == 'sep'
+      @talks = Talk.where(tag: '分ける')
+    elsif tag_key == 'col'
+      @talks = Talk.where(tag: '集まる')
+    elsif tag_key == 'kno'
+      @talks = Talk.where(tag: '知る')
+    else
+      redirect_to main_path
+    end
+    render :index
+  end
+
   private
   def talk_params
-    params.require(:talk).permit(:title, :detail, :image, :image_cache)
+    params.require(:talk).permit(:title, :detail, :image, :image_cache, :tag)
   end
 
   def get_id_params

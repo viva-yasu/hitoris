@@ -36,6 +36,10 @@
               <%= f.hidden_field :image_cache %>
             </div>
 
+            <div class="field profile-sex form-group">
+              <%= f.label :tag %>
+              <%= f.select :tag, Talk.tag.options %>
+            </div>
             <div class="actions">
               <%= f.submit '作成', class: 'btn-primary btn submit-btn' %>
             </div>

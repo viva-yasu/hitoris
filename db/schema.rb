@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225203135) do
+ActiveRecord::Schema.define(version: 20160226013135) do
 
   create_table "foods", force: :cascade do |t|
     t.string   "message"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160225203135) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "tag"
   end
 
   create_table "users", force: :cascade do |t|

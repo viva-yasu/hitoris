@@ -28,6 +28,9 @@ class FoodController < ApplicationController
 
   def post
     message = params[:message]
+    if message.length == 0
+      return render :text => 'OK', :status => 200
+    end
     food = Food.new(message: message, user_id: current_user.id, talk_id: params[:talk_id].to_i)
     food.save
     if current_user.image?
