@@ -1,5 +1,5 @@
 class Talk < ActiveRecord::Base
-  include Enumerize
+  extend Enumerize
   enumerize :tag, :in => ['分ける', '集まる', '知る']
 
   belongs_to :user

@@ -58,6 +58,15 @@ class TalksController < ApplicationController
     redirect_to main_path
   end
 
+  def search
+    word = params[:word]
+    if word.length == 0
+      redirect_to main_path
+    end
+    @talks = Talk.where("title like '%#{word}%' OR detail like '%#{word}%'")
+    render :index
+  end
+
   private
   def talk_params
     params.require(:talk).permit(:title, :detail, :image, :image_cache, :tag)

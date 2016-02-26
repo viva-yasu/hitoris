@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'chat/:id' => 'food#index'
 
   post 'post', to: 'food#post'
+  post 'search', to: 'talks#search'
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
