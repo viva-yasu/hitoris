@@ -41,7 +41,8 @@ class FoodController < ApplicationController
     data = {
         message: message,
         name: current_user.name,
-        image_path: img
+        image_path: img,
+        user_id: current_user.id
     }
     Pusher['food' + params[:talk_id] + '_channel'].trigger('chat_event', data)
     render :text => 'OK', :status => 200

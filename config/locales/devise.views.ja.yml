@@ -2,7 +2,7 @@ ja:
   activerecord:
     attributes:
       user:
-        name: 名前
+        name: ユーザー名
         current_password: "現在のパスワード"
         email: "メールアドレス"
         nearest_station: 最寄駅
