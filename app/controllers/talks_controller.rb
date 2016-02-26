@@ -29,7 +29,7 @@ class TalksController < ApplicationController
     @talk.title = params[:talk][:title]
     @talk.detail = params[:talk][:detail]
     @talk.image = params[:talk][:image].nil? ? params[:talk][:image_cache].split('/')[1] : params[:talk][:image]
-
+    @talk.tag = params[:talk][:tag]
     if @talk.save
       redirect_to action: 'show', id: @talk.id
     else
@@ -60,7 +60,7 @@ class TalksController < ApplicationController
 
   private
   def talk_params
-    params.require(:talk).permit(:title, :detail, :image, :image_cache)
+    params.require(:talk).permit(:title, :detail, :image, :image_cache, :tag)
   end
 
   def get_id_params

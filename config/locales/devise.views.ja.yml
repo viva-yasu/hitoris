@@ -50,6 +50,8 @@ ja:
               blank: を入力してください
             image:
               blank: を選択してください
+            tag:
+              blank: を選択してください
   devise:
     confirmations:
       new:
