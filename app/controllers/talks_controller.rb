@@ -4,7 +4,6 @@ class TalksController < ApplicationController
   end
 
   def show
-    # render text: params[:id]
     @talk = Talk.find(get_id_params)
     if @talk.nil?
       redirect_to main_path
@@ -64,6 +63,20 @@ class TalksController < ApplicationController
       redirect_to main_path
     end
     @talks = Talk.where("title like '%#{word}%' OR detail like '%#{word}%'")
+    render :index
+  end
+
+  def tag
+    tag_key = params[:tag_key]
+    if tag_key == 'sep'
+      @talks = Talk.where(tag: '分ける')
+    elsif tag_key == 'col'
+      @talks = Talk.where(tag: '集まる')
+    elsif tag_key == 'kno'
+      @talks = Talk.where(tag: '知る')
+    else
+      redirect_to main_path
+    end
     render :index
   end
 

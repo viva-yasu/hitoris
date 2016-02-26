@@ -33,9 +33,10 @@
     <% end %>
     <div class="labels">
       <p>タグで絞り込み→
-        <a href="#" class="label label-danger">分ける</a>
-        <a href="#" class="label label-success">集まる</a>
-        <a href="#" class="label label-default">知る</a></p>
+        <a href="/talks/sep" class="label label-danger">分ける</a>
+        <a href="/talks/col" class="label label-success">集まる</a>
+        <a href="/talks/kno" class="label label-default">知る</a>
+      <%= link_to 'X', main_path, class: 'label label-default label-delete' %></p>
     </div>
   </div>
 <% unless @talks.size == 0 %>
@@ -57,6 +58,10 @@
 
               <div class="card-name">
                 @<%= t.user.name %>
+              </div>
+
+              <div class="card-datetime">
+                タグ: <%= t.tag %>
               </div>
 
               <div class="card-nearest-station">

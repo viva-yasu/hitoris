@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'talks/show/:id' => 'talks#show'
   get 'talks/new', to: 'talks#new'
   get 'main', to: 'talks#index'
-
+  get 'talks/:tag_key' => 'talks#tag'
   get 'talks/destroy/:id' => 'talks#destroy'
   post 'talks/create', to: 'talks#create'
   patch 'talks/update', to: 'talks#update'

@@ -1,10 +1,10 @@
 <script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $('body').delay(100).animate({
             scrollTop: $(document).height()
-        },1500);
+        }, 1500);
         /*
          //animationなし
          setTimeout(function() {
@@ -21,41 +21,98 @@
 
     var pusher = new Pusher('0c30fd7ef30e68da3788');
     //    var channel = pusher.subscribe('general_channel');
-    var channel = pusher.subscribe('food' + <%= @talk_id %> + '_channel');
+    var channel = pusher.subscribe('food' + <%= @talk_id %> +'_channel');
     channel.bind('chat_event', function (data) {
         console.log(data);
-        var messagelog = document.getElementById('messagelog');
-        var messagediv = document.createElement('div');
-        var messageImage = document.createElement('img');
-        messageImage.src = data.image_path;
-        messageImage.width = 50;
-        messageImage.height = 50;
-        messagediv.innerHTML = data.message + ' @' + data.name;
-        messagediv.appendChild(messageImage);
-        messagelog.appendChild(messagediv);
-        $('.input_field').val('');
+        if (data.user_id == <%= current_user.id %>) {
+            var messagelogmy = document.getElementById('messagelog');
+            var messagedivmy = document.createElement('div');
+            var messagedivArrmy = document.createElement('div');
+            var messagedivKakkomy = document.createElement('div');
+            var messagePmy = document.createElement('p');
 
-        $('body').delay(100).animate({
-            scrollTop: $(document).height()
-        },150);
+            messagedivArrmy.classList.add('arrow');
+            messagedivKakkomy.classList.add('jibun');
+            messagePmy.innerHTML = data.message;
+            messagedivmy.innerHTML = data.message + ' @' + data.name;
+
+            messagedivKakkomy.appendChild(messagePmy);
+            messagedivmy.appendChild(messagedivArrmy);
+            messagelogmy.appendChild(messagedivKakkomy);
+            $('.input_field').val('');
+
+            $('body').delay(100).animate({
+                scrollTop: $(document).height()
+            }, 150);
+
+        } else {
+            var messagelog = document.getElementById('messagelog');
+            var messagediv = document.createElement('div');
+            var messageImage = document.createElement('img');
+            var messageName = document.createElement('p');
+            var messagedivArr = document.createElement('div');
+            var messagedivKakko = document.createElement('div');
+            var messageP = document.createElement('p');
+
+            messageImage.classList.add('profile');
+            messageName.classList.add('user_name');
+            messagedivArr.classList.add('arrow');
+            messagedivKakko.classList.add('kakko');
+            messageImage.src = data.image_path;
+            messageImage.width = 50;
+            messageImage.height = 50;
+            messageName.innerHTML = data.name;
+            messageP.innerHTML = data.message;
+
+            messagedivKakko.appendChild(messageP);
+            messagediv.appendChild(messageImage);
+            messagediv.appendChild(messageName);
+            messagediv.appendChild(messagedivArr);
+            messagelog.appendChild(messagedivKakko);
+            $('.input_field').val('');
+
+            $('body').delay(100).animate({
+                scrollTop: $(document).height()
+            }, 150);
+        }
     });
 </script>
-<div class="room-title"><%= @talk.title %></div>
-<div id='messagelog'>
-  <% unless @foods.nil? %>
-      <% @foods.each do |food| %>
-          <div>
-            <%= food.message %> @<%= food.user.name %>
-            <% if food.user.image? %><%= image_tag food.user.image.thumb.url, size: '50x50' %>
-            <% else %><%= image_tag 'thumb_default.png', size: '50x50' %>
-            <% end %>
-          </div>
-      <% end %>
-  <% end %>
+
+<div class="wrapper">
+  <div id='messagelog' class="planeex">
+    <% unless @foods.nil? %>
+        <% @foods.each do |food| %>
+            <div class="chat-parent">
+              <% if food.user.id != current_user.id %>
+                  <% if food.user.image? %>
+                      <%= image_tag(food.user.image.thumb.url, size: '50x50', :class => "profilepic") %>
+                  <% else %>
+                      <%= image_tag 'thumb_default.png', size: '50x50', :class => "profilepic" %>
+                  <% end %>
+                  <p class="user_name">
+                    <%= food.user.name %>
+                  </p>
+
+                  <div class="arrow"></div>
+                  <div class="kakko">
+                    <p><%= food.message %></p>
+                  </div>
+              <% else %>
+                  <div class="arrow"></div>
+                  <div class="jibun">
+                    <p><%= food.message %></p>
+                  </div>
+              <% end %>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
 </div>
 
-<%= form_tag('/post', :remote => true, :class => 'ws_form') do %>
-    <%= hidden_field_tag 'talk_id', @talk_id %>
-    <%= text_field_tag 'message', '', class: 'input_field' %>
-    <%= submit_tag '送信', id: 'submit' %>
+<%= form_tag('/post', :remote => true, :class => 'ws_form navbar-form navbar-left posi-btn') do %>
+    <div class="form-group">
+      <%= hidden_field_tag 'talk_id', @talk_id %>
+      <%= text_field_tag 'message', '', class: 'input_field form-control' %>
+    </div>
+    <%= submit_tag '送信', id: 'submit', class: 'btn posi-submit btn-primary' %>
 <% end %>
