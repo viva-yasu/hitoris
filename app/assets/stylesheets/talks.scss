@@ -135,8 +135,22 @@
 .talk-room-btn {
   margin-top: 10px;
 }
+.btn-go-to-chat {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 .chat-room {
   color: #ffffff;
+  display: block;
+  text-align: center;
+  background-color: #428bca;
+  border-radius: 5px;
+  border-top: 1px solid #000;
+  line-height: 2;
+  &:hover {
+    color: #ffffff;
+  }
 }
 
 .talks-wrap {
