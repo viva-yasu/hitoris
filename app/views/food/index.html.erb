@@ -2,6 +2,17 @@
 
 <script type="text/javascript">
     $(function () {
+        var fit_w = function() {
+            var txt_area = $('#txt_a');
+            var s_w = $('#submit-btn').width();
+            var b_w = $(window).width();
+            txt_area.width(b_w - s_w);
+        };
+        fit_w();
+        $(window).on('load resize', function () {
+            fit_w();
+        });
+
         $('body').delay(100).animate({
             scrollTop: $(document).height()
         }, 1500);
@@ -11,6 +22,36 @@
          window.scroll(0,$(document).height());
          },0);
          */
+
+        var chat_text_area = $(".input_field");
+        chat_text_area.height(30);//init
+        chat_text_area.css("lineHeight", "20px");//init
+
+        chat_text_area.on("input", function (evt) {
+            console.log($(evt.target).height());
+            console.log('scH' + evt.target.scrollHeight);
+            console.log('osH' + evt.target.offsetHeight);
+            if ($(evt.target).height() < 100) {
+                if (evt.target.scrollHeight > evt.target.offsetHeight) {
+                    $(evt.target).parent().height(evt.target.scrollHeight);
+                    $(evt.target).height(evt.target.scrollHeight - 6);
+                } else {
+                    var lineHeight = Number($(evt.target).css("lineHeight").split("px")[0]);
+                    while (true) {
+                        $(evt.target).height($(evt.target).height() - lineHeight);
+                        if (evt.target.scrollHeight > evt.target.offsetHeight) {
+                            $(evt.target).parent().height(evt.target.scrollHeight);
+                            $(evt.target).height(evt.target.scrollHeight - 6);
+                            break;
+                        }
+                    }
+                }
+                if ($(evt.target).height() <= 30) {
+                    $(evt.target).parent().height(36);
+                    $(evt.target).height(30);
+                }
+            }
+        });
     });
     // Enable pusher logging - don't include this in production
     Pusher.log = function (message) {
@@ -111,9 +152,9 @@
 </div>
 
 <%= form_tag('/post', :remote => true, :class => 'ws_form navbar-form navbar-left posi-btn') do %>
-    <div class="form-group">
+    <div class="input_field_block">
       <%= hidden_field_tag 'talk_id', @talk_id %>
-      <%= text_field_tag 'message', '', class: 'input_field form-control' %>
+      <%= text_area_tag 'message', '', id: 'txt_a', class: 'input_field' %>
+      <%= submit_tag '送信', id: 'submit submit-btn', class: 'btn-s posi-submit btn-primary' %>
     </div>
-    <%= submit_tag '送信', id: 'submit', class: 'btn posi-submit btn-primary' %>
 <% end %>

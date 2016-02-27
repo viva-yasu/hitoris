@@ -1,27 +1,22 @@
 body {
-  background-color: #efefef;
-  /*background-image: url("../img/menuback.jpg");*/
-  /*background-repeat: no-repeat;
-  background-size: 250%;
-  background-attachment: fixed;*/
+    background-color: #efefef;
+    /*background-image: url("../img/menuback.jpg");*/
+    /*background-repeat: no-repeat;
+    background-size: 250%;
+    background-attachment: fixed;*/
 }
-
 
 .planeex {
-  margin:2px 10px;
-  position: relative;
+    margin: 2px 10px;
+    position: relative;
 }
 
-
 .profilepic {
-  margin:1.5px;
-  weight:67px;
-  height:67px;
-	position: absolute;
-	display: inline-block;
-	border-radius: 50%;
-  box-shadow:0px 0px 5px 3px rgba(0, 0, 0, 0.2) inset;
-  border:1px solid #000;
+    margin: 4px;
+    height: 67px;
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
 }
 
 /*.popover.right {
@@ -58,10 +53,10 @@ body {
   background-color: #DCDCDC;
 }*/
 
-.user_name{
+.user_name {
     position: absolute;
     color: #fff;
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, .6);
     margin-top: -15px;
     border-radius: 5px;
     font-size: 9px;
@@ -72,46 +67,77 @@ body {
 }
 
 .user_name :active {
-  background-color: #8CBEB2;
+    background-color: #8CBEB2;
 }
 
 .kakko {
-  /*background-color: blue;*/
-  /*border: solid 2px #8CBEB2;*/
-  background-color: #8CBEB2;
-  margin-top:25px;
-  margin-left:75px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  padding:5px;
-  min-height: 70px;
-  box-shadow:3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+    /*background-color: blue;*/
+    /*border: solid 2px #8CBEB2;*/
+    background-color: #8CBEB2;
+    margin-top: 25px;
+    margin-left: 75px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 70px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .jibun {
-  /*background-color: blue;*/
-  /*border: solid 2px #F06060;*/
-  background-color: white;
-  margin-top:25px;
-  margin-right:0px;
-  margin-left: 75px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  padding:5px;
-  min-height: 70px;
-  box-shadow:3px 3px 3px 3px rgba(0, 0, 0, 0.3);
+    /*background-color: blue;*/
+    /*border: solid 2px #F06060;*/
+    background-color: white;
+    margin-top: 25px;
+    margin-right: 0;
+    margin-left: 95px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 70px;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-button.btn {
-  float:right;
-  padding-top:2px;
-  height:25px;
-  background-color: #3498db;
-  color:white;
-  font-weight: bold;
+input.btn-s {
+    height: 100%;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-button.btn :active{
-  background-color: #3289c3;
-  color:white;
+.input_field {
+    resize: none;
+    width: auto;
+    /*padding: 0;*/
+}
+.input_field_block {
+    height: 36px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.posi-btn {
+    position: relative;
+}
+.posi-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
