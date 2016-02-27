@@ -17,11 +17,9 @@
     <div class="talk-details-datetime">作成日時　： <%= @talk.created_at.strftime('%Y/%m/%d %H:%M') %></div>
 
     <div class="talk-details-datetime">タグ　　　： <%= @talk.tag %></div>
-
-    <div class="btn-go-to-chat">
-        <%= link_to 'チャットルーム', '/chat/' + @talk.id.to_s, class: 'chat-room' %>
-    </div>
   </div>
-
+  <div class="btn-go-to-chat">
+    <%= link_to 'チャットルーム', '/chat/' + @talk.id.to_s, class: 'chat-room' %>
+  </div>
 </div>
 
