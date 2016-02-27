@@ -137,6 +137,13 @@
 }
 .chat-room {
   color: #ffffff;
+  display: block;
+  text-align: center;
+  background-color: #428bca;
+  border-radius: 5px;
+  &:hover {
+    color: #ffffff;
+  }
 }
 
 .talks-wrap {
