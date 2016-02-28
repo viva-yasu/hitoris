@@ -38,6 +38,7 @@ ja:
               confirmation: "パスワードと一致しません"
             current_password:
               blank: を入力してください
+              invalid: パスワードが違います
         food:
           attributes:
             message:
