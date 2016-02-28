@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   VALID_DU_EMAIL_REGEX =  /\A[\w+\-.]+@mail\d{1,2}.doshisha.ac.jp\z/
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 10 }
   validates :nearest_station, presence: true
   # TODO:: コメントアウトを外す
   # validates :email, format: { with: VALID_DU_EMAIL_REGEX }
