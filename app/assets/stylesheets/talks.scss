@@ -6,6 +6,7 @@
   padding: 10px 0;
   min-height: 650px;
 }
+
 .card-talk {
   border-top: 1px solid #eae8e3;
   border-bottom: 1px solid #eae8e3;
@@ -13,20 +14,24 @@
   height: 100px;
   position: relative;
 }
+
 .img-block {
   position: relative;
   width: 100px;
   float: left;
 }
+
 .card-img {
 
 }
+
 .content-block {
   padding: 5px 8px;
   overflow: hidden;
   background: #ffffff;
   height: 100px;
 }
+
 .card-title {
   font-size: 16px;
   float: none;
@@ -36,50 +41,60 @@
   min-height: 25px;
   line-height: 1.4;
 }
+
 .card-name {
   color: #4c4a40;
   font-size: 12px;
   line-height: 1.4em;
 }
+
 .card-nearest-station {
   color: #4c4a40;
   font-size: 12px;
   line-height: 1.4em;
 }
+
 .card-datetime {
   color: #4c4a40;
   font-size: 12px;
   line-height: 1.4em;
 }
+
 .card-user-edit {
   position: absolute;
   top: 0;
   right: 0;
   width: 20px;
 }
+
 .link-user-edit {
   width: 100%;
   height: 100%;
 }
+
 .click-link-hidden {
   display: none;
 }
+
 .click-link-display {
   display: block;
 }
+
 .click-link {
   /* border: 1px solid #000; */
   position: absolute;
   background-color: #ffffff;
   top: 15px;
   left: -338px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   min-width: 360px;
 }
+
 .link-block {
   margin: 0;
   padding: 0 10px;
 }
+
 .link-text {
   color: #000000;
   display: block;
@@ -90,18 +105,23 @@
 .talk-details {
 
 }
+
 .talk-details > p {
   margin: 0;
 }
+
 .talk-details-name {
 
 }
+
 .talk-details-datetime {
 
 }
+
 .talk-details-datetime {
 
 }
+
 .talk-details-title-wrap {
   width: 100%;
   position: absolute;
@@ -109,45 +129,54 @@
   background: linear-gradient(to bottom, rgba(123, 119, 105, 0), rgba(123, 119, 105, 0.4));
   text-align: left;
 }
+
 .talk-details-title {
   font-weight: bold;
   padding: 15px 10px;
-  color:  #889b00;
+  color: #889b00;
   line-height: 1.2;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
+
 .talk-details-wrap {
   font-size: 14px;
-  padding: 10px;
+  padding: 10px 10px 36px 10px;
 }
+
 .talk-details-details {
 
 }
+
 .talk-details-img-block {
   min-height: 240px;
   text-align: center;
   position: relative;
 }
+
 .talk-details-img {
   width: 100%;
   max-width: 640px;
 }
+
 .talk-room-btn {
   margin-top: 10px;
 }
+
 .btn-go-to-chat {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 36px;
 }
+
 .chat-room {
   color: #ffffff;
   display: block;
   text-align: center;
   background-color: #428bca;
-  border-radius: 5px;
-  border-top: 1px solid #000;
-  line-height: 2;
+  border-top: 2px ridge #428bca;
+  line-height: 30px;
+  height: 100%;
   &:hover {
     color: #ffffff;
   }
