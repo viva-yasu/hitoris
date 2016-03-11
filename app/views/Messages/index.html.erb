@@ -79,43 +79,44 @@
             messagedivmy.appendChild(messagedivArrmy);
             messagedivmy.appendChild(messagedivKakkomy);
             messagelogmy.appendChild(messagedivmy);
-
-            $('.input_field').val('');
-
-            $('body').delay(100).animate({
-                scrollTop: $(document).height()
-            }, 150);
-
         } else {
             var messagelog = document.getElementById('messagelog');
-            var messagediv = document.createElement('div');
+
+            var messageParent = document.createElement('div');
             var messageImage = document.createElement('img');
-            var messageName = document.createElement('p');
-            var messagedivArr = document.createElement('div');
-            var messagedivKakko = document.createElement('div');
+            var messagePUserName = document.createElement('p');
+            var messageDivArr = document.createElement('div');
+            var messageDivKakko = document.createElement('div');
             var messageP = document.createElement('p');
 
-            messageImage.classList.add('profile');
-            messageName.classList.add('user_name');
-            messagedivArr.classList.add('arrow');
-            messagedivKakko.classList.add('kakko');
+            messageParent.classList.add('chat-parent');
+
+            messageImage.classList.add('profilepic');
             messageImage.src = data.image_path;
             messageImage.width = 50;
             messageImage.height = 50;
-            messageName.innerHTML = data.name;
+
+            messagePUserName.classList.add('user_name');
+            messagePUserName.innerHTML = data.name;
+
+            messageDivArr.classList.add('arrow');
+            messageDivKakko.classList.add('kakko');
+
             messageP.innerHTML = data.message.message;
 
-            messagedivKakko.appendChild(messageP);
-            messagediv.appendChild(messageImage);
-            messagediv.appendChild(messageName);
-            messagediv.appendChild(messagedivArr);
-            messagelog.appendChild(messagedivKakko);
-            $('.input_field').val('');
+            messageParent.appendChild(messageImage);
+            messageParent.appendChild(messagePUserName);
+            messageParent.appendChild(messageDivArr);
+            messageDivKakko.appendChild(messageP);
+            messageParent.appendChild(messageDivKakko);
 
-            $('body').delay(100).animate({
-                scrollTop: $(document).height()
-            }, 150);
+            messagelog.appendChild(messageParent);
         }
+        $('.input_field').val('');
+
+        $('body').delay(100).animate({
+            scrollTop: $(document).height()
+        }, 150);
     });
 </script>
 
