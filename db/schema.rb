@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226013135) do
+ActiveRecord::Schema.define(version: 20160311080404) do
 
-  create_table "foods", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.string   "message"
     t.integer  "user_id"
     t.datetime "created_at", null: false
