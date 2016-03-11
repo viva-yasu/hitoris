@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   post 'talks/create', to: 'talks#create'
   patch 'talks/update', to: 'talks#update'
 
-  get 'chat/:id' => 'food#index'
+  get 'chat/:id' => 'messages#index'
 
-  post 'post', to: 'food#post'
+  post 'post', to: 'messages#post'
   post 'search', to: 'talks#search'
 
   devise_for :users, controllers: { registrations: 'registrations' }

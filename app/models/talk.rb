@@ -3,7 +3,7 @@ class Talk < ActiveRecord::Base
   enumerize :tag, :in => ['分ける', '集まる', '知る']
 
   belongs_to :user
-  has_many :foods
+  has_many :messages
 
   mount_uploader :image, ImageUploader
 

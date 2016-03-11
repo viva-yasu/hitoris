@@ -17,7 +17,7 @@
             scrollTop: $(document).height()
         }, 1500);
         /*
-         //animationなし
+         //animationなしの場合
          setTimeout(function() {
          window.scroll(0,$(document).height());
          },0);
@@ -28,9 +28,6 @@
         chat_text_area.css("lineHeight", "20px");//init
 
         chat_text_area.on("input", function (evt) {
-            console.log($(evt.target).height());
-            console.log('scH' + evt.target.scrollHeight);
-            console.log('osH' + evt.target.offsetHeight);
             if ($(evt.target).height() < 100) {
                 if (evt.target.scrollHeight > evt.target.offsetHeight) {
                     $(evt.target).parent().height(evt.target.scrollHeight);
@@ -62,10 +59,9 @@
 
     var pusher = new Pusher('0c30fd7ef30e68da3788');
     //    var channel = pusher.subscribe('general_channel');
-    var channel = pusher.subscribe('food' + <%= @talk_id %> +'_channel');
+    var channel = pusher.subscribe('messages' + <%= @talk_id %> +'_channel');
     channel.bind('chat_event', function (data) {
-        console.log(<%= current_user.id %>);
-        console.log(data.user_id);
+        console.log(data);
         if (data.user_id == <%= current_user.id %>) {
             var messagelogmy = document.getElementById('messagelog');
             var messagedivmy = document.createElement('div');
@@ -73,14 +69,17 @@
             var messagedivKakkomy = document.createElement('div');
             var messagePmy = document.createElement('p');
 
+            messagedivmy.classList.add('chat-parent');
             messagedivArrmy.classList.add('arrow');
             messagedivKakkomy.classList.add('jibun');
-            messagePmy.innerHTML = data.message;
-            messagedivmy.innerHTML = data.message + ' @' + data.name;
+            messagedivArrmy.innerHTML = '';
+            messagePmy.innerHTML = data.message.message;
 
             messagedivKakkomy.appendChild(messagePmy);
             messagedivmy.appendChild(messagedivArrmy);
-            messagelogmy.appendChild(messagedivKakkomy);
+            messagedivmy.appendChild(messagedivKakkomy);
+            messagelogmy.appendChild(messagedivmy);
+
             $('.input_field').val('');
 
             $('body').delay(100).animate({
@@ -104,7 +103,7 @@
             messageImage.width = 50;
             messageImage.height = 50;
             messageName.innerHTML = data.name;
-            messageP.innerHTML = data.message;
+            messageP.innerHTML = data.message.message;
 
             messagedivKakko.appendChild(messageP);
             messagediv.appendChild(messageImage);
@@ -122,27 +121,27 @@
 
 <div class="wrapper">
   <div id='messagelog' class="planeex">
-    <% unless @foods.nil? %>
-        <% @foods.each do |food| %>
+    <% unless @messages.nil? %>
+        <% @messages.each do |message| %>
             <div class="chat-parent">
-              <% if food.user.id != current_user.id %>
-                  <% if food.user.image? %>
-                      <%= image_tag(food.user.image.thumb.url, size: '50x50', :class => "profilepic") %>
+              <% if message.user.id != current_user.id %>
+                  <% if message.user.image? %>
+                      <%= image_tag(message.user.image.thumb.url, size: '50x50', :class => "profilepic") %>
                   <% else %>
                       <%= image_tag 'thumb_default.png', size: '50x50', :class => "profilepic" %>
                   <% end %>
                   <p class="user_name">
-                    <%= food.user.name %>
+                    <%= message.user.name %>
                   </p>
 
                   <div class="arrow"></div>
                   <div class="kakko">
-                    <p><%= food.message %></p>
+                    <p><%= message.message %></p>
                   </div>
               <% else %>
                   <div class="arrow"></div>
                   <div class="jibun">
-                    <p><%= food.message %></p>
+                    <p><%= message.message %></p>
                   </div>
               <% end %>
             </div>
